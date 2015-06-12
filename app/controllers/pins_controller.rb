@@ -7,12 +7,12 @@ class PinsController < ApplicationController
   end
 
   def new
-    @pin = Pin.new
+    @pin = current_user.pins.build
 
   end
 
   def create
-    @pin = Pin.new(pin_params)
+    @pin = current_user.pins.build(pin_params)
 
     if @pin.save
       # using @pin here automatically routes to the pin's show page
